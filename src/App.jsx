@@ -1,7 +1,12 @@
+import MenuResto from "./MenuResto"
+import Header from "./Header"
+
 function App() {
-    const nama = "Joko Prawiro";
     return(
-        <h1>Halo {nama} dari ReactJS</h1>
+        <>
+            <Header/>
+            <MenuResto />
+        </>
     )
 }
 
