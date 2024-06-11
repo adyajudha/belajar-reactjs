@@ -1,11 +1,10 @@
-import MenuResto from "./MenuResto"
-import Header from "./Header"
+import Mood from "./Mood"
 
 function App() {
     return(
         <>
-            <Header/>
-            <MenuResto />
+            <Mood hari="Senin" mood="😔"/>
+            <Mood hari="Jum'at" mood="😁"/>
         </>
     )
 }
