@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react"
 
 function Button() {
-    const [counter, setCounter] = useState(0);
-    let newCounter = 0;
-    function clickHandler(){
-        newCounter = counter + 1;
-        console.log(`saya diklik ${newCounter} kali`);
-        setCounter(newCounter)
-    }
-
+    const [countLike, setCountLike] = useState(0);
+    const [countDislike, setCountDislike] = useState(0);
+    useEffect(()=>{
+        console.log(`wadidaw like ${countLike} | dislike ${countDislike}`);
+    },[countLike]);
     return(
-        <button onClick={()=>clickHandler()}>Saya diklik {counter} 😁</button>
+
+        <>
+            <button onClick={()=>setCountLike(countLike+1)}>{countLike} Like 👍</button>
+            <button onClick={()=>setCountDislike(countDislike+1)}>{countDislike} Dislike 👎</button>
+        </>
     )
 }
-
 export default Button
