@@ -1,36 +1,22 @@
-import { useCallback, useState } from "react";
-import ChildComponent from "./ChildComponent";
+import { useRef } from "react"
 
 function App() {
-    const [likeCounter, setLikeCounter] = useState(0)
-    const [subcribeCounter, setSubcribeCounter ]= useState(0)
-    const [name, setName] = useState("RumahRafif")
+    const message = useRef(null)
+    const displayPesan = useRef(null)
 
-    
-
-    const handlerName = useCallback(()=> {
-        let channelName ="";
-        if (name == 'RumahRafif') {
-            channelName = "WPU";
-        } else {
-            channelName = "RumahRafif";
-        }
-
-        setName(channelName);
-        console.log(`setname run ${name}`)
-    }, [name]);
-
+    function clickHandler() {
+        console.log(message.current.value);
+        displayPesan.current.innerHTML = message.current.value;
+    }
     return(
         <>
-            <p>
-                <button onClick={()=>setLikeCounter(likeCounter+1)}>{likeCounter}Like 👍</button>
-            </p>
-            <p>
-                <button onClick={()=>setSubcribeCounter(subcribeCounter+1)}>{subcribeCounter}Subcribe ▶</button>
-            </p>
-
-            <ChildComponent name={name} aksi={handlerName} />
-            
+            <div>
+                <input type="text" ref={message} name="" id="" placeholder="kirim pesan kamu"/>
+            </div>
+            <div>
+                <button onClick={clickHandler}>Klik Aku 😁</button>
+            </div>
+            <div ref={displayPesan}></div>
         </>
     )
 }
