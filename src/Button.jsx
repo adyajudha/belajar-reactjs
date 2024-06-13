@@ -6,7 +6,7 @@ function Button() {
     const [countDislike, setCountDislike] = useState(0);
     useEffect(()=>{
         console.log(`wadidaw like ${countLike} | dislike ${countDislike}`);
-    },[countLike]);
+    }, [countLike]);
     return(
 
         <>
