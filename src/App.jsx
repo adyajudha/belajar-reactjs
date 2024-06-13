@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ChildComponent from "./ChildComponent";
 
 function App() {
@@ -6,7 +6,9 @@ function App() {
     const [subcribeCounter, setSubcribeCounter ]= useState(0)
     const [name, setName] = useState("RumahRafif")
 
-    function handlerName() {
+    
+
+    const handlerName = useCallback(()=> {
         let channelName ="";
         if (name == 'RumahRafif') {
             channelName = "WPU";
@@ -16,7 +18,7 @@ function App() {
 
         setName(channelName);
         console.log(`setname run ${name}`)
-    }
+    }, [name]);
 
     return(
         <>
@@ -27,8 +29,8 @@ function App() {
                 <button onClick={()=>setSubcribeCounter(subcribeCounter+1)}>{subcribeCounter}Subcribe ▶</button>
             </p>
 
-            <ChildComponent name={name}/>
-            <button onClick={handlerName}>Ganti nama Channel</button>
+            <ChildComponent name={name} aksi={handlerName} />
+            
         </>
     )
 }
